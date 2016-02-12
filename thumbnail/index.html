@@ -8,7 +8,12 @@
 </head>
 
 <body>
-
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+      </div>
+    </div>
+  </div>
 </body>
 
 <script type="text/jsx">
@@ -21,14 +26,32 @@
     }
   });
 
+  var Thumbnail = React.createClass({
+    render: function(){
+      return <div className="thumbnail">
+        <img src={this.props.imageUrl} />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <p>
+            <Badge title={this.props.title} number={this.props.number}/>
+          </p>
+        </div>
+      </div>
+    }
+  });
+
   var options = {
-    title: 'Inbox',
-    number: 32
+    title: 'See More',
+    number: 32,
+    header: 'Learn React',
+    description: 'oewjksihwjenlshjw',
+    imageUrl: 'http://rapiddg.com/sites/default/files/imce-files/react.png'
   };
 
   // Ask react to render this class
-  var element = React.createElement(Badge, options);
+  var element = React.createElement(Thumbnail, options);
 
   // When we ask react to render, we will tell it where to place the rendered element in the dom
-  ReactDOM.render(element, document.body);
+  ReactDOM.render(element, document.querySelector('.target'));
 </script>
