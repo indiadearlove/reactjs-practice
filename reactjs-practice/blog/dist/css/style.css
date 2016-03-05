@@ -1,0 +1,49 @@
+body {
+	background-color: lightblue;
+);
+}
+
+.note {
+	background-color: white;
+	width: 100%;
+	min-height: 100px;
+	height: 260px;
+	position: relative;
+	box-shadow: 10px 10px 5px #888888;
+	padding: 100px;
+}
+
+.note p {
+	position: absolute;
+	top: 80;
+	left: 30;
+}
+
+.note h4 {
+	position: absolute;
+	top: 10;
+	left: 30;
+	font-weight: bold;
+}
+
+.note h5 {
+	position: absolute;
+	top: 40;
+	left: 30;
+	font-weight: bold;
+}
+
+ul {
+	list-style: none;
+	text-align: center;
+	padding: 10px;
+	
+}
+
+li {
+	display: inline;
+	padding: 15px;
+	color: black;
+}
+
+

@@ -1,0 +1,500 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<script type="text/javascript" src="js/react.js"></script>
+		<script type="text/javascript" src="js/react-dom.js"></script>
+    <title>India Dearlove</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link href="./css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/portfolio-website.css">
+
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+
+  </head>
+	<div id="app"></div>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+
+
+	<script type="text/babel">
+
+		//Navbar Component
+
+		var Navbar = React.createClass({
+			render: function(){
+
+				var portfolioActive = '';
+				var aboutActive = '';
+				var backgroundActive = '';
+
+				if(this.props.page =='portfolio'){
+					portfolioActive = 'active';
+				} else if(this.props.page == 'about'){
+					aboutActive = 'active';
+				} else if(this.props.page == 'background'){
+					backgroundActive = 'active';
+				}
+				return(
+	        <div>
+						<nav className="navbar navbar-default navbar-fixed-top">
+				      <div className="container-fluid">
+				        <div className="navbar-header">
+				          
+				          <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				            <span className="icon-bar"></span>
+				            <span className="icon-bar"></span>
+				            <span className="icon-bar"></span>                        
+				          </button>
+				          <i className="blue navbar-brand fa fa-rocket">ID</i>
+
+				        </div>
+				        <div className="collapse navbar-collapse" id="myNavbar">
+				          <ul className="nav navbar-nav">
+				           <li className={aboutActive}><a onClick={this.props.aboutClick} href="#">About</a></li>
+				           <li className={portfolioActive}><a onClick={this.props.portfolioClick} href="#">Portfolio</a></li>
+				           <li className={backgroundActive}><a onClick={this.props.backgroundClick} href="#">Professional Background</a></li>
+				           <li><a href="#contactContainer">Contact</a></li>
+				         </ul>
+				        </div>
+				      </div>
+				    </nav>
+					</div>
+				)
+			}
+		});
+
+		var PageAbout = React.createClass({
+			render: function(){
+				return(
+	        <div>
+
+				    <div className="container contentContainer" id="topContainer">
+				      <div id="background-image"></div>
+				      <div className="row">
+				        <div className="col-md-6 col-md-offset-3 wow swing" id="topRow">
+				      
+				          <h1 className="marginTop blue">INDIA DEARLOVE</h1>
+				          <p className="lead blue">Web Developer</p>
+				      
+				        </div> 
+				        <hr />     
+				      </div>
+				    </div>
+						<div className="contentContainer" id="aboutContainer">
+			    
+				      <div className="wow fadeIn">
+				        <h1 className="center title">A little bit about me...</h1>
+				        <img className="profile-pic center" src="./images/profile.jpg" />
+				        <br />
+				        <p className="description center">Hi, I am India, a freelance web developer, from London. I write code and create websites. So far I have made a handful of websites for small businesses as well as many of my own for fun. Over the past few years I have been increasing my knowledge by self-teaching and doing various courses, most of which are online. For me, learning will always be ongoing, as technology is forever changing and updating. Another thing I love to do is travel and that is why at the moment I love the freedom of being a freelancer.</p>
+				        <p className="description center">Currently based in Melbourne for a few months, because that is the beauty of being a freelancer, and open for work.</p>
+				        <br />
+				        <a className="btn btn-sample btn-lg center-block" href="professional-background.html" role="button" id="index-btn">my professional background</a>
+				      </div>
+
+				    </div>
+			    </div>
+				)
+			}
+		});
+
+    var PageBackground = React.createClass({
+			render: function(){
+				return(
+	        <div>
+					  <div className="contentContainer" id="bg-container">
+		    
+				      <h1 className="center title">Professional Background</h1>
+				      <br />
+				      <div className="section">
+				        <div className="bg-title"><h2>Education</h2></div>
+				          <div className="bg-section">
+				            <h4 className="blue">Exeter University, Computer Science and Maths</h4>
+				            <h4> 2013-2014</h4>
+				            <p className="bg-description">While I was only at university for a year, I still managed to get a lot out of it learning about the fundamentals of programming and computer systems; in addition, I took part in various clubs, from Ski Club to Maths Society. However, I decided that university was not for me as it was very theory based and I want to actually code, also I found that I was learning better on my own than from lectures so I decided to leave and go a different path.</p>
+				            <br />
+				            <h4 className="blue">Kings Canterbury</h4>
+				            <h4>2008-2013</h4>
+				            <p className="bg-description">King’s is where I took my GCSE’s and A-levels. For A-levels I took Maths, Further Maths and Physics receiving A*AB respectively. Every year I would do the British Maths Olympiad always achieving gold or silver, and in my last years I did both Sevenoaks Code-Breaking Challenge and Southampton University Cipher Challenge. Also, I always kept up with sports, playing everything from Hockey to Badminton.</p>
+				        </div>
+				      </div>
+				      <div className="section">
+				        <div className="bg-title"><h2>Courses</h2></div>
+				        <div className="bg-section">
+				          <h4 className="blue">Full-Stack Web Developer Course</h4>
+				          <h4>Makers Academy, 2014-2015</h4>
+				          <p className="bg-description">MA is probably one of the hardest and best things I ever did; it is an intense coding course that really pushes you to your limits. This gave me a very solid foundation for coding which allowed me to get my first coding jobs.</p>
+				          <br />
+				          <h4 className="blue">Women in Leadership</h4>
+				          <h4>Coursea, Case Western Reserve University, 2015</h4>
+				          <p className="bg-description">I took this online course as it is aimed to help women (and men) to engage in purposeful career development and I am in the early stages of my career. It turned out to be a great stepping stone to my future goals, and helped me to figure out where I want to go.</p>
+				          <br />
+				          <h4 className="blue">Responsive Web Design</h4>
+				          <h4>Skillcrush, 2015</h4>
+				          <p className="bg-description">People search online on their phone, and the numbers are only growing. After I realized this I knew it was essential to learn how to make beautiful web pages that are responsive to mobile phones and tablets, which is why I am currently taking this course.</p>
+				          <br />
+				          <h4 className="blue">Calculus One</h4>
+				          <h4>Coursea, Ohio State University, 2015</h4>
+				          <p className="bg-description">This online course teaches the fundamentals of higher calculus. I already studied most of it at university, but I wanted a refresher.</p>           
+				        </div>
+				      </div>
+
+				      <br />
+				      <a className="btn btn-sample btn-lg center-block" href="portfolio-page.html" role="button">have a look at my portfolio</a>
+
+		        </div>
+					</div>
+				)
+			}
+		});
+
+		var PagePortfolio = React.createClass({
+			render: function(){
+				return(
+	        <div>
+			  <div className="contentContainer" id="backgroundContainer">
+    
+		      <h1 className="center title">Portfolio</h1>
+		      <br />
+		      
+		      <div className="row">
+		        <div className="col-sm-6 col-sm-push-6">
+		          <h2 className="blue text"><a href="http://www.divaski.com/" target="_blank">Diva Ski</a></h2>
+
+		          <p className="pp-description text">For me this has been an ongoing project for the last few months. Having previously created the website for the clients in wix, I am currently coding a new one for them. While the new site will be very similar it will be more responsive. The technologies that I am using to create this are PHP, HTML, CSS, MySQL, Bootstrap, Javascript and JQuery to name a few.</p>
+		        </div>
+		        <div className="col-sm-6 col-sm-pull-6">
+		          <div id="myCarousel" className="carousel slide" data-ride="carousel">
+		  
+		            <ol className="carousel-indicators">
+		              <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
+		              <li data-target="#myCarousel" data-slide-to="1"></li>
+		              <li data-target="#myCarousel" data-slide-to="2"></li>
+		            </ol>
+
+		            <div className="carousel-inner" role="listbox">
+
+		              <div className="item active">
+		                <img src="./images/portfolio-screenshots/divaski-ourservice.png" alt="Chania" />
+		              </div>
+
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/divaski-contact.png" alt="Chania" />
+		              </div>
+		            
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/divaski-accom.png" alt="Flower" />
+		              </div>
+		          
+		            </div>
+
+		            <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		              <span className="sr-only">Previous</span>
+		            </a>
+		            <a className="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		              <span className="sr-only">Next</span>
+		            </a>
+		          </div>
+		          <br />
+		        </div>
+		      </div>
+
+		      <div className="row">
+		        <div className="col-sm-6 col-sm-push-6">
+		          <h2 className="text blue"><a href="http://linkup-battersea.org/" target="_blank">Link Up Battersea</a></h2>
+
+		          <p className="pp-description text">Link Up Battersea brings together volunteers willing to share their professional skills with local charities, and they needed a website which could display opportunities that volunteers could search through. While I originally set out to use Node and MongoDB this turned into a PHP project for various reasons. Other technologies used were HTML, CSS, Bootstrap etc.</p>
+		        </div>
+		        <div className="col-sm-6 col-sm-pull-6">
+		          <div id="myCarousel-6" className="carousel slide" data-ride="carousel">
+		  
+		            <ol className="carousel-indicators">
+		              <li data-target="#myCarousel-6" data-slide-to="0" className="active"></li>
+		              <li data-target="#myCarousel-6" data-slide-to="1"></li>
+		              <li data-target="#myCarousel-6" data-slide-to="2"></li>
+		            </ol>
+
+		            <div className="carousel-inner" role="listbox">
+
+		              <div className="item active">
+		                <img src="./images/portfolio-screenshots/linkup1.png" alt="Chania" />
+		              </div>
+
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/linkup2.png" alt="Chania" />
+		              </div>
+		            
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/linkup3.png" alt="Flower" />
+		              </div>
+		          
+		            </div>
+
+		            <a className="left carousel-control" href="#myCarousel-6" role="button" data-slide="prev">
+		              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		              <span className="sr-only">Previous</span>
+		            </a>
+		            <a className="right carousel-control" href="#myCarousel-6" role="button" data-slide="next">
+		              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		              <span className="sr-only">Next</span>
+		            </a>
+		          </div>
+		          <br />
+		        </div>
+		        
+		        
+		      </div>
+
+		      <div className="row">
+		        <div className="col-sm-6 col-sm-push-6">
+		          <h2 className="text blue">I am ME</h2>
+
+		          <p className="pp-description text">The challenge was to create a website, that could be shown to potential investors, within 10 days. Including me, we were a team of five. The clients who bought us this project had already made various frameworks and had a solid vision of what the site would look like. We used various technologies including HTML, CSS, Javascript, JQuery, Ruby, Rails and RSpec.</p>
+		        </div>
+		        <div className="col-sm-6 col-sm-pull-6">
+		          <div id="myCarousel-2" className="carousel slide" data-ride="carousel">
+		    
+		            <ol className="carousel-indicators">
+		              <li data-target="#myCarousel-2" data-slide-to="0" className="active"></li>
+		              <li data-target="#myCarousel-2" data-slide-to="1"></li>
+		              <li data-target="#myCarousel-2" data-slide-to="2"></li>
+		            </ol>
+
+		            <div className="carousel-inner" role="listbox">
+
+		              <div className="item active">
+		                <img src="./images/portfolio-screenshots/iamMEmain.png" alt="Chania" />
+		              </div>
+
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/iamme1.png" alt="Chania" />
+		              </div>
+		            
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/iamme2.png" alt="Flower" />
+		              </div>
+		          
+		            </div>
+		            <a className="left carousel-control" href="#myCarousel-2" role="button" data-slide="prev">
+		              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		              <span className="sr-only">Previous</span>
+		            </a>
+		            <a className="right carousel-control" href="#myCarousel-2" role="button" data-slide="next">
+		              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		              <span className="sr-only">Next</span>
+		            </a>
+		          </div>
+		          <br />
+		        </div>
+		        
+		        
+		      </div>
+
+		      <div className="row">
+		        <div className="col-sm-6 col-sm-push-6">
+		          <h2 className="text blue">GeoLocation Tracker</h2>
+
+		          <p className="pp-description text">This was a small project that I did just to learn more about APIs and API keys. For this I used the Google maps API to gather the users location and display the information. The technologies I used were HTML, CSS, Javascript.</p>
+		        </div>
+		        <div className="col-sm-6 col-sm-pull-6">
+		          <div id="myCarousel-4" className="carousel slide" data-ride="carousel">
+		            <ol className="carousel-indicators">
+		              <li data-target="#myCarousel-4" data-slide-to="0" className="active"></li>
+		              <li data-target="#myCarousel-4" data-slide-to="1"></li>
+		            </ol>
+
+		            <div className="carousel-inner" role="listbox">
+
+		              <div className="item active">
+		                <img src="./images/portfolio-screenshots/geolocation1.png" alt="Chania" />
+		              </div>
+
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/geolocation2.png" alt="Chania" />
+		              </div>
+		          
+		            </div>
+
+		            <a className="left carousel-control" href="#myCarousel-4" role="button" data-slide="prev">
+		              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		              <span className="sr-only">Previous</span>
+		            </a>
+		            <a className="right carousel-control" href="#myCarousel-4" role="button" data-slide="next">
+		              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		              <span className="sr-only">Next</span>
+		            </a>
+		          </div>
+		          <br />
+		        </div>
+
+		      </div>
+		      <div className="row">
+		        <div className="col-sm-6 col-sm-push-6">
+
+		          <h2 className="text blue">Weather Checker</h2>
+
+		          <p className="text pp-description">The reason for making this website was simply to put my PHP skills to the test. I used PHP to scrape information from a weather website so that the information was easily accessible. The technologies I used were Bootstrap, PHP, HTML, CSS, Javascript.</p>
+		        </div>
+		        <div className="col-sm-6 col-sm-pull-6">
+		          <div id="myCarousel-5" className="carousel slide" data-ride="carousel">
+
+		            <div className="carousel-inner" role="listbox">
+
+		              <div className="item active">
+		                <img src="./images/portfolio-screenshots/weather-checker-desktop.png" alt="Chania" />
+		              </div>
+		          
+		            </div>
+		            <br />
+
+		          </div>
+		        </div>
+
+		      </div>
+		      <div className="row">
+		        <div className="col-sm-6 col-sm-push-6">
+
+		          <h2 className="text blue">PigPong</h2>
+
+		          <p className="text pp-description">This was a group-based project that took us 4 days to make. During this project I learnt about the physics of gaming and frameworks by using Phaser, a HTML5 game framework. I also made the logo. A few technologies I used were JQuery, Node, HTML, CSS, Javascript.</p>
+
+		        </div>
+		        <div className="col-sm-6 col-sm-pull-6">
+		          <div id="myCarousel-3" className="carousel slide" data-ride="carousel">
+		            <ol className="carousel-indicators">
+		              <li data-target="#myCarousel-3" data-slide-to="0" className="active"></li>
+		              <li data-target="#myCarousel-3" data-slide-to="1"></li>
+		            </ol>
+
+		            <div className="carousel-inner" role="listbox">
+
+		              <div className="item active">
+		                <img src="./images/portfolio-screenshots/pig-pong-main.png" alt="Chania" />
+		              </div>
+
+		              <div className="item">
+		                <img src="./images/portfolio-screenshots/pig-pong.png" alt="Chania" />
+		              </div>
+		          
+		            </div>
+
+		            <a className="left carousel-control" href="#myCarousel-3" role="button" data-slide="prev">
+		              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		              <span className="sr-only">Previous</span>
+		            </a>
+		            <a className="right carousel-control" href="#myCarousel-3" role="button" data-slide="next">
+		              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		              <span className="sr-only">Next</span>
+		            </a>
+
+		          </div>
+		        </div>
+
+		      </div>
+		    </div>
+			</div>
+				)
+			}
+		});
+
+		var Footer = React.createClass({
+			render: function(){
+				return(
+	        <div className="container footerContainer" id="contactContainer">
+
+		        <p className="lead center">Want to get in touch</p>
+		        <div className="social-media">
+		          
+		          <a className="btn btn-lg btn-social-icon btn-envelope" onclick="window.location.href='mailto:india_dearlove@yahoo.co.uk'">
+		            <i className="fa fa-envelope"></i>
+		          </a>
+		          <a className="btn btn-lg btn-social-icon btn-twitter" href="http://www.twitter.com/indiadearlove" target="_blank">
+		            <i className="fa fa-twitter"></i>
+		          </a>        
+		          <a className="btn btn-lg btn-social-icon btn-github" href="https://github.com/indiadearlove" target="_blank">
+		            <i className="fa fa-github"></i>
+		          </a> 
+		          <a className="btn btn-lg btn-social-icon btn-linkedin" href="https://uk.linkedin.com/in/indiadearlove" target="_blank">
+		            <i className="fa fa-linkedin"></i>
+		          </a>
+		          
+		          <br /><br />
+		          <p className="copyright">© 2015 Code by India Dearlove, obviously!</p>
+
+		        </div>
+					</div>
+				)
+			}
+		});
+
+		var App = React.createClass({
+			getInitialState: function(){
+				return {
+					page: 'about'
+				}
+			},
+			handlePortfolioClick: function(){
+				this.setState({
+					page: 'portfolio'
+				})
+			},
+			handleAboutClick: function(){
+				this.setState({
+					page: 'about'
+				})
+			},
+			handleBackgroundClick: function(){
+				this.setState({
+					page: 'background'
+				})
+			},
+			render: function(){
+				if(this.state.page == 'about'){
+          var page = <PageAbout />
+				} else if(this.state.page == 'portfolio'){
+					var page = <PagePortfolio />
+				} else if(this.state.page == 'background'){
+					var page = <PageBackground />
+				}
+				return(
+					<div>
+						<Navbar
+						  page={this.state.page} 
+						  portfolioClick={this.handlePortfolioClick}
+						  aboutClick={this.handleAboutClick}
+						  backgroundClick={this.handleBackgroundClick} />
+						{page}
+						<Footer />
+					</div>
+				)
+			}
+		})
+
+		ReactDOM.render(
+		  <App />,
+		  document.getElementById('app')	
+		);
+
+	</script>
+    <script src="js/wow.js"></script>
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+  </body>
+</html>
