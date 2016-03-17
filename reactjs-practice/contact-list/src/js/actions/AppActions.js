@@ -2,10 +2,16 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 
 var AppActions = {
-	receiveItems: function(items){
+	saveContact: function(contact){
 		AppDispatcher.handleViewAction({
-			actionType: AppConstants.RECEIVE_ITEMS,
-			items: items
+			actionType: AppConstants.SAVE_CONTACT,
+			contact: contact
+		});
+	},
+	receiveContacts: function(contacts){
+		AppDispatcher.handleViewAction({
+			actionType: AppConstants.RECEIVE_CONTACTs,
+			contacts: contacts
 		});
 	}
 }
