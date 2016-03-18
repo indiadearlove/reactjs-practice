@@ -8,10 +8,18 @@ var AppActions = {
 			contact: contact
 		});
 	},
+
 	receiveContacts: function(contacts){
 		AppDispatcher.handleViewAction({
-			actionType: AppConstants.RECEIVE_CONTACTs,
+			actionType: AppConstants.RECEIVE_CONTACTS,
 			contacts: contacts
+		});
+	},
+	
+	removeContact: function(contactId){
+    AppDispatcher.handleViewAction({
+			actionType: AppConstants.REMOVE_CONTACT,
+			contactId: contactId
 		});
 	}
 }

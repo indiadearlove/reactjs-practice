@@ -19961,10 +19961,18 @@ var AppActions = {
 			contact: contact
 		});
 	},
+
 	receiveContacts: function(contacts){
 		AppDispatcher.handleViewAction({
-			actionType: AppConstants.RECEIVE_CONTACTs,
+			actionType: AppConstants.RECEIVE_CONTACTS,
 			contacts: contacts
+		});
+	},
+	
+	removeContact: function(contactId){
+    AppDispatcher.handleViewAction({
+			actionType: AppConstants.REMOVE_CONTACT,
+			contactId: contactId
 		});
 	}
 }
@@ -20072,10 +20080,14 @@ var Contact = React.createClass({displayName: "Contact",
 				React.createElement("td", null, this.props.contact.name), 
 				React.createElement("td", null, this.props.contact.phone), 
 				React.createElement("td", null, this.props.contact.email), 
-				React.createElement("td", null, React.createElement("a", {href: "#", className: "btn btn-default", onClick: this.handleEdit}, "Edit"))
+				React.createElement("td", null, React.createElement("a", {href: "#", className: "btn btn-default", onClick: this.handleEdit}, "Edit"), React.createElement("a", {href: "#", className: "btn btn-danger", onClick: this.handleRemove.bind(this, this.props.contact.id)}, "Delete"))
 			)
 		);
 	},
+
+	handleRemove: function(i, j){
+    AppActions.removeContact(i);
+	}
 
 });
 
@@ -20123,7 +20135,8 @@ module.exports = ContactList;
 },{"../actions/AppActions":165,"../stores/AppStore":173,"./Contact.js":168,"react":164}],170:[function(require,module,exports){
 module.exports = {
 	SAVE_CONTACT: 'SAVE_CONTACT',
-	RECEIVE_CONTACTS: 'RECEIVE_CONTACTS'
+	RECEIVE_CONTACTS: 'RECEIVE_CONTACTS',
+	REMOVE_CONTACT: 'REMOVE_CONTACT'
 }
 
 },{}],171:[function(require,module,exports){
@@ -20180,6 +20193,10 @@ var AppStore = assign({}, EventEmitter.prototype, {
 	emitChange: function(){
 		this.emit(CHANGE_EVENT);
 	},
+	removeContact: function(contactId){
+    var index = _contacts.findIndex(x => x.id === contactId);
+    _contacts.splice(index, 1);
+	},
 	addChangeListener: function(callback){
 		this.on('change', callback);
 	},
@@ -20209,11 +20226,26 @@ AppDispatcher.register(function(payload){
 		  break;
 
 		case AppConstants.RECEIEVE_CONTACT:
-		  console.log('RECEIEVE_CONTACT contactsss');
+		  console.log('RECEIEVE contactsss');
 
 		  // Store Save
 
 		  AppStore.setContacts(action.contacts);
+
+		  // Emit Change
+
+		  AppStore.emit(CHANGE_EVENT);
+		  break;
+
+		case AppConstants.REMOVE_CONTACT:
+		  console.log('REMOVE contactsss');
+
+		  // Store Remove
+
+		  AppStore.removeContact(action.contactId);
+
+		  // API Remove
+		  AppAPI.removeContact(action.contactId);
 
 		  // Emit Change
 
@@ -20253,7 +20285,11 @@ module.exports = {
         AppActions.receiveContacts(contacts);
       });
     });
-	}
+	},
+  removeContact: function(contactId){
+    this.firebaseRef = new Firebase('https://contactlist79.firebaseio.com/contacts/'+contactId);
+    this.firebaseRef.remove();
+  }
 }
 
 },{"../actions/AppActions":165,"firebase":3}],175:[function(require,module,exports){
@@ -20283,7 +20319,11 @@ module.exports = {
         AppActions.receiveContacts(contacts);
       });
     });
-	}
+	},
+  removeContact: function(contactId){
+    this.firebaseRef = new Firebase('https://contactlist79.firebaseio.com/contacts/'+contactId);
+    this.firebaseRef.remove();
+  }
 }
 
 },{"../actions/AppActions":165,"firebase":3}]},{},[172]);
