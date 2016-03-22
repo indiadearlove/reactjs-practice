@@ -1,7 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 
-var Locallydb = require('locallydb');
+var LocallyDB = require('locallydb');
 
 var db = new LocallyDB('./.data');
 var users = db.collection('users');
@@ -45,4 +45,6 @@ router.use(passport.session());
 
 router.get('/login', function (req, res){
   res.render('login');
-})
+});
+
+exports.routes = router;
