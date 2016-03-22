@@ -9,6 +9,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-plumber": "^1.1.0",
+    "reactify": "^1.1.1",
+    "through2": "^2.0.1"
+  },
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
   }
 }
