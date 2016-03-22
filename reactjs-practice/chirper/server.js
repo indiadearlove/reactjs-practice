@@ -5,12 +5,10 @@ express()
     .set('view engine', 'ejs')
     .use(express.static('./public'))
     .use(login.routes)
-    // .use(require('./chirps'))
-    .get('*', function (req, res) {
-        res.render('index'
-        // 	, {
-        //     user: login.safe(req.user)
-        // }
-        );
+    .use(require('./chirps'))
+    .get('*', login.required, function(req, res) {
+      res.render('index', {
+        user: login.safe(req.user)
+      });
     })
 .listen(3000);
