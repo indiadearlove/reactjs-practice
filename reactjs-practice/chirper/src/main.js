@@ -1,4 +1,1 @@
-var events = require('events');
-
-console.log('hello');
-console.log(events);
+var actions = require('./actions');
