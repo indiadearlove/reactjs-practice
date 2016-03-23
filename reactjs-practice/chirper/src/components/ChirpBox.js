@@ -7,14 +7,15 @@ var ChirpBox = React.createClass({
     render: function(){
       var c = this.props.chirp;
       return (<li className='row chirp'>
-        <Link className='two colums' to='user' params={{id: c:userId}}>
+        <Link className='two columns' to='user' params={{id: c.userId}}>
           <img src={utils.avatar(c.email)} />
         </Link>
         <div className='ten columns'>
           <p>
             <strong> {c.fullname} </strong>
             <span className='timestamp'>
-              @{c.username} {moment(c.$created).fromNow()}
+              @{c.username}{moment(c.$created).fromNow()}
+            </span>
           </p>
           <p> {c.text} </p>
         </div>
