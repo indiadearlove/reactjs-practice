@@ -14,7 +14,7 @@ var ChirpBox = React.createClass({
           <p>
             <strong> {c.fullname} </strong>
             <span className='timestamp'>
-              @{c.username}{moment(c.$created).fromNow()}
+              @{c.username} {moment(c.$created).fromNow()}
             </span>
           </p>
           <p> {c.text} </p>
