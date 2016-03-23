@@ -1,13 +1,13 @@
-console.log('here');
 var gulp = require('gulp');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var through2 = require('through2')
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
-console.log('above');
+
+
 gulp.task('browserify', function () {
-  console.log('here');
+  console.log('browserfyhereee');
 	gulp.src('./src/main.js')
 		.pipe(plumber())
 	    .pipe(through2.obj(function (file, enc, next){
@@ -18,9 +18,11 @@ gulp.task('browserify', function () {
 	                    next(null, file);
 	                });
 	        }))
- 	  	.pipe(concat('./main.js'))
-	    .pipe(gulp.dest('./public'))
+ 	  	.pipe(concat('main.js'))
+	    .pipe(gulp.dest('public'))
 });
+
+console.log('afterhere');
 
 gulp.task('default', ['browserify']);
 
