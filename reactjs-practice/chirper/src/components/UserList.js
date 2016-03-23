@@ -3,6 +3,8 @@ var UserStore= require('../stores/users');
 var actions = require('../actions');
 var Link = require('react-router').Link;
 
+var Box = require('./ChirpBox');
+
 var UserList = module.exports = React.createClass({
   getInitialState: function(){
     return {
@@ -23,7 +25,9 @@ var UserList = module.exports = React.createClass({
     var items = this.state.users.filter(function(user){
       return this.state.user.cid !== user.cid;
     }.bind(this)).map(function(user){
-      return <li> @{user.username} </li>;
+      return <Box user={user} key={user.cid}>
+        Follow Buttons
+      </Box>;
     });
 
     return <ul> {items} </ul>;
