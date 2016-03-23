@@ -9,6 +9,8 @@ var API = module.exports = {
   saveChirp: function(text){
     text = text.trim();
     if(text === '') return;
+
+    post('/api/chirps', {text: text}).then(actions.chirped.bind(actions));
   }
 };
 
@@ -20,15 +22,19 @@ function get(url){
   });
 }
 
-// function post(url){
-//   return fetch(url, {
-//     method: 'POST',
-//     credentials: 'include',
-//     body: JSON.stringify(body || {}),
-//   }).then(function(res){
-//     return res.json();
-//   });
-// }
+function post(url, body){
+  return fetch(url, {
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify(body || {}),
+    headers: {
+      'Content-Type' : 'application/json',
+      'Accept': 'application/json'
+    }
+  }).then(function(res){
+    return res.json();
+  });
+}
 
 dispatcher.register(function(action){
   switch(action.actionType){

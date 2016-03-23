@@ -16,6 +16,13 @@ var ChirpInput = React.createClass({
           placeholder='Say Something!'
           onChange={this.handleChange} />
       </div>
+      <div className='three columns'>
+        <button
+          className='u-full-width button-primary'
+          onClick={this.handleClick}>
+            Chirp
+        </button>
+      </div>
     </div>);
   },
   handleChange: function(evt){
