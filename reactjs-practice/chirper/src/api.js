@@ -58,10 +58,10 @@ dispatcher.register(function(action){
     case constants.CHIRP:
       API.saveChirp(action.data);
       break;
-    case constants.FOLLOw:
+    case constants.FOLLOW:
       API.follow(action.data);
       break;
-    case constants.UNFOLLOw:
+    case constants.UNFOLLOW:
       API.unfollow(action.data);
       break;
   }

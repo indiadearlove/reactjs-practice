@@ -20,7 +20,7 @@ var FollowButton = module.exports = React.createClass({
       action = this.unfollow;
     } else {
       text = 'Follow';
-      action: this.follow;
+      action = this.follow;
     }
 
     return <button onClick={action}> {text} </button>;

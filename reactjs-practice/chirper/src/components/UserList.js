@@ -26,5 +26,3 @@ var UserList = module.exports = React.createClass({
     return <ul> {items} </ul>;
   }
 });
-
-module.exports = UserList;
