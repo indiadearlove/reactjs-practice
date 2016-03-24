@@ -9,15 +9,7 @@ var FollowButton = module.exports = React.createClass({
       currentlyFollowing: UserStore.currentUser.following
     };
   },
-  componentDidMount: function(){
-    UserStore.addChangeListener(this.onChange);
-  },
-  componentWillUnmount: function(){
-    UserStore.removeChangeListener(this.onChange)
-  },
-  onChange: function(){
-    this.setState(this.getInitialState());
-  },
+  mixins: [UserStore.mixin()],
   render: function(){
     if(this.state.id === this.props.userId) return <span> This is you! </span>;
 

@@ -13,21 +13,11 @@ var UserProfile = module.exports = React.createClass({
       chirps: ChirpStore.byUserId(id)
     };
   },
-  componentDidMount: function(){
-    UserStore.addChangeListener(this.onChange);
-    ChirpStore.removeChangeListener(this.onChange);
-  },
-  componentWillUnmount: function(){
-    UserStore.removeChangeListener(this.onChange);
-    ChirpStore.removeChangeListener(this.onChange);
-  },
-  onChange: function(){
-    this.setState(this.getInitialState());
-  },
+  mixins: [UserStore.mixin(), ChirpStore.mixin()],
   render: function(){
 
     var chirps = this.state.chirps.map(function(chirp){
-      return <li key={chirp.cid}> {chirp.text} </li>
+      return <li key={chirp.cid}> {chirp.text} </li>;
     });
 
     return (<div>

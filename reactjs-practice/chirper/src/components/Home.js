@@ -11,15 +11,7 @@ var Home = React.createClass({
         chirps: ChirpStore.timeline()
       };
     },
-    componentDidMount: function(){
-      ChirpStore.addChangeListener(this.onChange);
-    },
-    componentWillUnmount: function(){
-      ChirpStore.removeChangeListener(this.onChange)
-    },
-    onChange: function(){
-      this.setState(this.getInitialState());
-    },
+    mixins: [ChirpStore.mixin()],
     render: function(){
     return (<div>
         <ChirpInput onSave={this.saveChirp} />
