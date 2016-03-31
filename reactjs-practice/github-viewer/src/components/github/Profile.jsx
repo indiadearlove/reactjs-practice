@@ -8,7 +8,7 @@ class Profile extends Component{
   	return(
       <div className="panel panel-default">
 			  <div className="panel-heading">
-			    <h3 className="panel-title">{this.props.userData.name}</h3>
+			    <h3 className="panel-title"> {this.props.userData.name}</h3>
 			  </div>
 			  <div className="panel-body">
 			    <div className="row">
@@ -31,6 +31,7 @@ class Profile extends Component{
 	                  <li className="list-group-item"><strong>Username: </strong>{this.props.userData.login}</li>
 	                  <li className="list-group-item"><strong>Location: </strong>{this.props.userData.location}</li>
 	                  <li className="list-group-item"><strong>Email: </strong>{this.props.userData.email}</li>
+                    <li className="list-group-item"><strong>Website: </strong><a href={this.props.userData.blog} target='_blank'>{this.props.userData.blog}</a></li>
                   </ul>
                 </div>
               </div>
